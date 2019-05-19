@@ -1,3 +1,11 @@
+const { promisify } = require('util');
+const GoogleSpreadsheet = require('google-spreadsheet');
+const creds = {
+    client_email: process.env.GOOGLE_CLIENT_EMAIL,
+    private_key: process.env.GOOGLE_PRIVATE_KEY
+}
+var res = new GoogleSpreadsheet(process.env.RESPONSES_ID);
+
 module.exports = async (client) => {
     await promisify(res.useServiceAccountAuth)(creds)
     let info = await promisify(res.getInfo)()
