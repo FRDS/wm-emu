@@ -2,7 +2,10 @@ var moment = require('moment');
 const Discord = require('discord.js');
 const {promisify } = require('util');
 const GoogleSpreadsheet = require('google-spreadsheet');
-const creds = require('../service-account.json');
+const creds = {
+    client_email: process.env.GOOGLE_CLIENT_EMAIL,
+    private_key: process.env.GOOGLE_PRIVATE_KEY
+}
 const records = require('../records.json');
 const getUrl = require('get-urls');
 var res = new GoogleSpreadsheet(process.env.RESPONSES_ID);
