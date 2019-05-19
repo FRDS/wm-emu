@@ -1,0 +1,223 @@
+{
+    "courses": [{
+            "id": 1,
+            "course": "C1 Inward",
+            "records": {
+                "min-row": 5,
+                "max-row": 14,
+                "min-col": 2,
+                "max-col": 4
+            }
+        },
+        {
+            "id": 2,
+            "course": "C1 Outward",
+            "records": {
+                "min-row": 5,
+                "max-row": 14,
+                "min-col": 5,
+                "max-col": 7
+            }
+        },
+        {
+            "id": 3,
+            "course": "Fukuoka",
+            "records": {
+                "min-row": 135,
+                "max-row": 144,
+                "min-col": 2,
+                "max-col": 4
+            }
+        },
+        {
+            "id": 4,
+            "course": "Hakone Inbound",
+            "records": {
+                "min-row": 148,
+                "max-row": 157,
+                "min-col": 5,
+                "max-col": 7
+            }
+        },
+        {
+            "id": 5,
+            "course": "Hakone Outbound",
+            "records": {
+                "min-row": 148,
+                "max-row": 157,
+                "min-col": 2,
+                "max-col": 4
+            }
+        },
+        {
+            "id": 6,
+            "course": "Ikebukuro",
+            "records": {
+                "min-row": 44,
+                "max-row": 53,
+                "min-col": 2,
+                "max-col": 4
+            }
+        },
+        {
+            "id": 7,
+            "course": "Metro Highway (Fukutoshin)",
+            "records": {
+                "min-row": 135,
+                "max-row": 144,
+                "min-col": 2,
+                "max-col": 4
+            }
+        },
+        {
+            "id": 8,
+            "course": "Metro Highway (Kanagawa)",
+            "records": {
+                "min-row": 161,
+                "max-row": 170,
+                "min-col": 5,
+                "max-col": 7
+            }
+        },
+        {
+            "id": 9,
+            "course": "Metro Highway (Tokyo)",
+            "records": {
+                "min-row": 161,
+                "max-row": 170,
+                "min-col": 2,
+                "max-col": 4
+            }
+        },
+        {
+            "id": 10,
+            "course": "Minato Mirai Inward",
+            "records": {
+                "min-row": 96,
+                "max-row": 105,
+                "min-col": 2,
+                "max-col": 4
+            }
+        },
+        {
+            "id": 11,
+            "course": "Minato Mirai Outward",
+            "records": {
+                "min-row": 96,
+                "max-row": 105,
+                "min-col": 5,
+                "max-col": 7
+            }
+        },
+        {
+            "id": 12,
+            "course": "Nagoya",
+            "records": {
+                "min-row": 109,
+                "max-row": 118,
+                "min-col": 2,
+                "max-col": 4
+            }
+        },
+        {
+            "id": 13,
+            "course": "New Belt Line CW",
+            "records": {
+                "min-row": 18,
+                "max-row": 27,
+                "min-col": 5,
+                "max-col": 7
+            }
+        },
+        {
+            "id": 14,
+            "course": "New Belt Line CCW",
+            "records": {
+                "min-row": 18,
+                "max-row": 27,
+                "min-col": 2,
+                "max-col": 4
+            }
+        },
+        {
+            "id": 15,
+            "course": "Osaka",
+            "records": {
+                "min-row": 122,
+                "max-row": 131,
+                "min-col": 2,
+                "max-col": 4
+            }
+        },
+        {
+            "id": 16,
+            "course": "Shibuya",
+            "records": {
+                "min-row": 31,
+                "max-row": 40,
+                "min-col": 2,
+                "max-col": 4
+            }
+        },
+        {
+            "id": 17,
+            "course": "Wangan Eastbound",
+            "records": {
+                "min-row": 57,
+                "max-row": 66,
+                "min-col": 2,
+                "max-col": 4
+            }
+        },
+        {
+            "id": 18,
+            "course": "Wangan Westbound",
+            "records": {
+                "min-row": 57,
+                "max-row": 66,
+                "min-col": 5,
+                "max-col": 7
+            }
+        },
+        {
+            "id": 19,
+            "course": "Yaesu Inward",
+            "records": {
+                "min-row": 83,
+                "max-row": 92,
+                "min-col": 2,
+                "max-col": 4
+            }
+        },
+        {
+            "id": 20,
+            "course": "Yaesu Outward",
+            "records": {
+                "min-row": 83,
+                "max-row": 92,
+                "min-col": 5,
+                "max-col": 7
+            }
+        },
+        {
+            "id": 21,
+            "course": "Yokohane Downward",
+            "records": {
+                "min-row": 70,
+                "max-row": 79,
+                "min-col": 2,
+                "max-col": 4
+            }
+        },
+        {
+            "id": 22,
+            "course": "Yokohane Upward",
+            "records": {
+                "min-row": 70,
+                "max-row": 79,
+                "min-col": 5,
+                "max-col": 7
+            }
+        }
+    ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "wm-emu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FRDS/wm-emu.git"
+  },
+  "author": "Faradise",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FRDS/wm-emu/issues"
+  },
+  "homepage": "https://github.com/FRDS/wm-emu#readme",
+  "dependencies": {
+    "discord.js": "^11.5.0",
+    "dotenv": "^8.0.0",
+    "fs": "0.0.1-security",
+    "get-urls": "^9.1.0",
+    "google-spreadsheet": "^2.0.7",
+    "moment": "^2.24.0"
+  }
+}
