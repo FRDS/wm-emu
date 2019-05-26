@@ -8,14 +8,12 @@ const client = new Discord.Client();
 client.login(process.env.TOKEN);
 client.commands = new Discord.Collection();
 
+//LOAD COMMANDS
 fs.readdir("./commands/", (err,files) => {
 	if(err) console.log(err);
 	let cmdfiles = files.filter(f => f.split(".").pop() === "js");
-
 	if(cmdfiles.length <= 0) return console.log("Command list not found!");
-	
 	console.log(`\nLoading ${cmdfiles.length} command files...`);
-
 	for(var i = 0;i < cmdfiles.length;i++){
 		let props = require(`./commands/${cmdfiles[i]}`);
 		console.log(`${i+1}: ${cmdfiles[i]} loaded!`);
@@ -23,14 +21,12 @@ fs.readdir("./commands/", (err,files) => {
 	}
 });
 
+//LOAD EVENTS
 fs.readdir("./events/", (err,files) => {
 	if(err) console.log(err);
 	let evtfiles = files.filter(f => f.split(".").pop() === "js");
-
 	if (evtfiles.length <= 0) return console.log("Event listener list not found!");
-
 	console.log(`\nLoading ${evtfiles.length} event listener...`);
-
 	for(var i = 0;i < evtfiles.length;i++){
 		let props = require(`./events/${evtfiles[i]}`);
 		console.log(`${i+1}: ${evtfiles[i]} loaded!`);

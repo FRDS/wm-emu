@@ -1,11 +1,11 @@
 module.exports = async (client, message) => {
-    if (message.author.bot) return;
-	let messageArray =  message.content.split(" ");
-	let cmd = messageArray[0];
-	let args = messageArray.slice(1);
-
-	let commandfile = client.commands.get(cmd.slice(process.env.PREFIX.length));
-	if(commandfile) commandfile.run(client, message, args);
+	if (message.author.bot) return;
+	if (message.content.indexOf(process.env.PREFIX) !== 0) return;
+	const args = message.content.slice(process.env.PREFIX.length).trim().split(/ +/g);
+  	const cmd = args.shift().toLowerCase();
+	let cmdfile = client.commands.get(cmd);
+	if(!cmdfile) return; 
+	cmdfile.run(client, message, args);
 };
 
 module.exports.help = {
