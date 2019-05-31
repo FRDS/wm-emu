@@ -12,14 +12,8 @@ module.exports.run = async (client, message, args) => {
     let info = await promisify(res.getInfo)()
     let time = moment(info.timestamp).format('LLL');
     let agg = info.worksheets[1];
-    let crank = info.worksheets[3];
     let records = await promisify(agg.getRows)({
         limit: 4
-    });
-    let courses = await promisify(crank.getRows)();
-    var ranklist = [];
-    courses.forEach(course => {
-        ranklist.push(`${course.rank}. ${course.course}`);
     });
     const embed = {
             "description": `Last updated on **${time}**`,
@@ -54,12 +48,7 @@ module.exports.run = async (client, message, args) => {
                     "name": `__**❌ Rejected**__`,
                     "value": `${records[3].count} records`,
                     "inline": true
-                },
-                {
-                    "name": `__**Course List (Sorted by Popularity)**__`,
-                    "value": `${ranklist.join('\n')}`,
-                    "inline": true
-                },
+                }
             ]
     };
     return message.channel.send({
