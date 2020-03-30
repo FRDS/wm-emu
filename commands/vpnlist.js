@@ -52,3 +52,7 @@ async function update(hub,api){
     res = out.result.NumSessions_u32;
     return res;
 }
+
+module.exports.help = {
+    name: "hp"
+}
