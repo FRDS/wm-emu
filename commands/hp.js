@@ -22,7 +22,7 @@ module.exports.run = async (client, message, args) => {
             let num = Number(args[0]);
             if (num <= 0 || num > 22) return message.channel.send('⚠️ Course not found!');
             pick = courses[num-1];
-            msg = `<:Gatchan2:613924110296154129> Recommended HP setting for ${pick.fullname} is ${pick.hp}`
+            msg = `<:Gatchan4:613924110296154129> Recommended HP setting for **${pick.fullname}** is **${pick.hp}**`
             break;
         case (args.length > 0 && isNaN(args[0])):
             let search = args.join(" ");
@@ -30,7 +30,7 @@ module.exports.run = async (client, message, args) => {
             if (result.length < 1) return message.channel.send('⚠️ Course not found!');
             if (result.length > 1) return message.channel.send(multipleMatch(result));
             pick = result[0];
-            msg = `<:Gatchan2:613924110296154129> Recommended HP setting for ${pick.fullname} is ${pick.hp}`
+            msg = `<:Gatchan4:613924110296154129> Recommended HP setting for **${pick.fullname}** is **${pick.hp}**`
             break;
         default:
             msg = {
