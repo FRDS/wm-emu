@@ -1,7 +1,7 @@
 var moment = require('moment');
 const Discord = require('discord.js');
 
-module.exports.run = (client, message, args) => {
+module.exports.run = async (client, message, args) => {
     let author;
     let footer = {
         "icon_url": "https://cdn.discordapp.com/icons/380717547349344256/41cd75b22d6c2d43c56b4e0b1aa595d8.png",
@@ -14,7 +14,8 @@ module.exports.run = (client, message, args) => {
             "icon_url": "https://cdn.discordapp.com/avatars/435142969209651201/459e8f02ab9ccfc658b5aea416ea1775.png"
         };
         let fields = [];
-        commands.map(command => {
+        commands.filter(command => command.conf.hidden === false)
+        .map(command => {
             let field = {
                 "name": command.help.name,
                 "value": command.help.description

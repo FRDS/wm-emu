@@ -57,8 +57,12 @@ module.exports.run = async (client, message, args) => {
 
 }
 
+module.exports.conf = {
+    hidden: false
+};
+
 module.exports.help = {
     name: "info",
     description: "Display general database information",
     usage: "info"
-}
+};

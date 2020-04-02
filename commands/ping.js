@@ -5,6 +5,10 @@ module.exports.run = async (client, message, args) => {
 	m.delete(3000).then(message.delete());
 }
 
+module.exports.conf = {
+    hidden: false
+};
+
 module.exports.help = {
 	name: "ping",
     description: "Ping the bot to measures latency.",

@@ -5,7 +5,8 @@ module.exports = async (client, message) => {
   	const cmd = args.shift().toLowerCase();
 	let cmdfile = client.commands.get(cmd);
 	if(!cmdfile) return; 
-	cmdfile.run(client, message, args);
+	await cmdfile.run(client, message, args);
+	return console.log(`${message.author.tag} used ${cmd} command.`);
 };
 
 module.exports.help = {

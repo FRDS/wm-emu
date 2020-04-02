@@ -49,8 +49,12 @@ function multipleMatch(matches) {
     return msg;
 }  
 
+module.exports.conf = {
+    hidden: false
+};
+
 module.exports.help = {
     name: "hp",
     description: "Display the recommended horsepower for a course.",
     usage: "- hp [course number]\n- hp [course name]"
-}
+};

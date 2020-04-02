@@ -181,8 +181,12 @@ function createList(cells) {
     return list;
 }
 
+module.exports.conf = {
+    hidden: false
+};
+
 module.exports.help = {
     name: "course",
     description: "Display information of a course",
     usage: "- course [course number]\n- course [course name]"
-}
+};
