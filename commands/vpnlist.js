@@ -37,7 +37,7 @@ module.exports.run = async (client, message, args) => {
 async function UpdateEmbed() {
     // let AU_A = await UpdateSession("AU", "AU-A");
     let NA_A = await UpdateSession("NA", "NA-A");
-    let NA_B = await UpdateSession("NA", "NA-A");
+    let NA_B = await UpdateSession("NA", "NA-B");
     let SG_A = await UpdateSession("SG", "SG-A");
     let SG_B = await UpdateSession("SG", "SG-B");
 
