@@ -21,21 +21,24 @@ module.exports.run = async (client, message, args) => {
     // });
     message.delete();
     let embed = await UpdateEmbed();
-    let sent = await message.channel.send('',embed);
-    
-    message.channel.fetchMessages({around: sent.id, limit: 1})
-    .then(msg => {
-        const fetchedMsg = msg.first();
-        setInterval(async function(){
-            embed = await UpdateEmbed();
-            fetchedMsg.edit('',embed);
-            console.log("Player list updated.");
-        },30000);
-    });
+    let sent = await message.channel.send('', embed);
+
+    message.channel.fetchMessages({
+            around: sent.id,
+            limit: 1
+        })
+        .then(msg => {
+            const fetchedMsg = msg.first();
+            setInterval(async function () {
+                embed = await UpdateEmbed();
+                fetchedMsg.edit('', embed);
+                console.log("Player list updated.");
+            }, 30000);
+        });
 }
 
 async function UpdateEmbed() {
-    // let AU_A = await UpdateSession("AU", "AU-A");
+    let AU_A = await UpdateSession("AU", "AU-A");
     let NA_A = await UpdateSession("NA", "NA-A");
     let NA_B = await UpdateSession("NA", "NA-B");
     let SG_A = await UpdateSession("SG", "SG-A");
@@ -50,7 +53,8 @@ async function UpdateEmbed() {
         "name": "VPN Player List",
         "icon_url": "https://cdn.discordapp.com/avatars/435142969209651201/459e8f02ab9ccfc658b5aea416ea1775.png"
     };
-    description = `**${flag.us} Hub NA-A (${NA_A.length}/4):**\n${NA_A.join('\n')}`;
+    description = `**${flag.au} Hub AU-A (${AU_A.length}/4):**\n${AU_A.join('\n')}`;
+    description += `\n\n**${flag.us} Hub NA-A (${NA_A.length}/4):**\n${NA_A.join('\n')}`;
     description += `\n\n**${flag.us} Hub NA-B (${NA_B.length}/4):**\n${NA_B.join('\n')}`;
     description += `\n\n**${flag.sg} Hub SG-A (${SG_A.length}/4):**\n${SG_A.join('\n')}`;
     description += `\n\n**${flag.sg} Hub SG-B (${SG_B.length}/4):**\n${SG_B.join('\n')}\n`;
@@ -65,9 +69,22 @@ async function UpdateEmbed() {
 }
 
 async function UpdateSession(server, hub) {
-    let api = (server === 'SG') ? 'https://34.87.52.82:443/api/':'https://35.224.158.198:443/api/';
-    let pw = (server === 'SG') ? process.env.SG_SERVER_PASSWORD : process.env.NA_SERVER_PASSWORD;
-    let body = {
+    let api, pw, body;
+    switch (server) {
+        case 'SG':
+            api = 'https://34.87.52.82:443/api/';
+            pw = process.env.SG_SERVER_PASSWORD;
+            break;
+        case 'NA':
+            api = 'https://35.224.158.198:443/api/';
+            pw = process.env.NA_SERVER_PASSWORD;
+            break;
+        case 'AU':
+            api = 'https://27.100.36.36:5555/api/';
+            pw = process.env.AU_SERVER_PASSWORD;
+            break;
+    };
+    body = {
         "jsonrpc": "2.0",
         "id": "rpc_call_id",
         "method": "EnumSession",
