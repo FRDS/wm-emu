@@ -7,6 +7,7 @@ const agent = new https.Agent({
 })
 const flag = {
     "us": `\uD83C\uDDFA\uD83C\uDDF8`,
+    "gb": `\uD83C\uDDEC\uD83C\uDDE7`,
     "au": `\uD83C\uDDE6\uD83C\uDDFA`,
     "sg": `\uD83C\uDDF8\uD83C\uDDEC`
 };
@@ -39,10 +40,13 @@ module.exports.run = async (client, message, args) => {
 
 async function UpdateEmbed() {
     let AU_A = await UpdateSession("AU", "AU-A");
+    let AU_B = await UpdateSession("AU", "AU-B");
     let NA_A = await UpdateSession("NA", "NA-A");
     let NA_B = await UpdateSession("NA", "NA-B");
     let SG_A = await UpdateSession("SG", "SG-A");
     let SG_B = await UpdateSession("SG", "SG-B");
+    let UK_A = await UpdateSession("UK", "UK-A");
+    let UK_B = await UpdateSession("UK", "UK-B");
 
     let embed, author, description;
     let footer = {
@@ -54,10 +58,13 @@ async function UpdateEmbed() {
         "icon_url": "https://cdn.discordapp.com/avatars/435142969209651201/459e8f02ab9ccfc658b5aea416ea1775.png"
     };
     description = `**${flag.au} Hub AU-A (${AU_A.length}/4):**\n${AU_A.join('\n')}`;
+    description += `\n\n**${flag.au} Hub AU-A (${AU_B.length}/4):**\n${AU_B.join('\n')}`;
     description += `\n\n**${flag.us} Hub NA-A (${NA_A.length}/4):**\n${NA_A.join('\n')}`;
     description += `\n\n**${flag.us} Hub NA-B (${NA_B.length}/4):**\n${NA_B.join('\n')}`;
     description += `\n\n**${flag.sg} Hub SG-A (${SG_A.length}/4):**\n${SG_A.join('\n')}`;
-    description += `\n\n**${flag.sg} Hub SG-B (${SG_B.length}/4):**\n${SG_B.join('\n')}\n`;
+    description += `\n\n**${flag.sg} Hub SG-B (${SG_B.length}/4):**\n${SG_B.join('\n')}`;
+    description += `\n\n**${flag.gb} Hub SG-B (${UK_A.length}/4):**\n${UK_A.join('\n')}`;
+    description += `\n\n**${flag.gb} Hub SG-B (${UK_B.length}/4):**\n${UK_B.join('\n')}\n`;
     embed = new Discord.RichEmbed({
         timestamp: moment(),
         color: 16711680,
@@ -83,6 +90,10 @@ async function UpdateSession(server, hub) {
             api = 'https://27.100.36.36:5555/api/';
             pw = process.env.AU_SERVER_PASSWORD;
             break;
+        case 'UK':
+            api = 'https://derole.co.uk:5555/api/';
+            pw = process.env.UK_SERVER_PASSWORD;
+        break;
     };
     body = {
         "jsonrpc": "2.0",
@@ -109,7 +120,11 @@ async function UpdateSession(server, hub) {
         .then(json => {
             let list = json.result.SessionList;
             list.map(session => {
-                players.push(`- ${session.Username_str}`);
+                if (session.Username_str === 'terminal') {
+                    players.unshift(`**Terminal Emu: Enabled**`);
+                } else {
+                    players.push(`- ${session.Username_str}`);
+                }
             })
             return players;
         })
