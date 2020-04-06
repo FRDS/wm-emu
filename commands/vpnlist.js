@@ -57,14 +57,14 @@ async function UpdateEmbed() {
         "name": "VPN Player List",
         "icon_url": "https://cdn.discordapp.com/avatars/435142969209651201/459e8f02ab9ccfc658b5aea416ea1775.png"
     };
-    description = `**${flag.au} Hub AU-A (${AU_A.length}/4):**\n${AU_A.join('\n')}`;
-    description += `\n\n**${flag.au} Hub AU-A (${AU_B.length}/4):**\n${AU_B.join('\n')}`;
-    description += `\n\n**${flag.us} Hub NA-A (${NA_A.length}/4):**\n${NA_A.join('\n')}`;
-    description += `\n\n**${flag.us} Hub NA-B (${NA_B.length}/4):**\n${NA_B.join('\n')}`;
-    description += `\n\n**${flag.sg} Hub SG-A (${SG_A.length}/4):**\n${SG_A.join('\n')}`;
-    description += `\n\n**${flag.sg} Hub SG-B (${SG_B.length}/4):**\n${SG_B.join('\n')}`;
-    description += `\n\n**${flag.gb} Hub UK-A (${UK_A.length}/4):**\n${UK_A.join('\n')}`;
-    description += `\n\n**${flag.gb} Hub UK-B (${UK_B.length}/4):**\n${UK_B.join('\n')}\n`;
+    description = `**${flag.au} Hub AU-A (${AU_A.players.length}/4)\nTerminal Emu: ${AU_A.terminal}**\n${AU_A.players.join('\n')}`;
+    description += `\n\n**${flag.au} Hub AU-A (${AU_B.players.length}/4)\nTerminal Emu: ${AU_B.terminal}**\n${AU_B.players.join('\n')}`;
+    description += `\n\n**${flag.us} Hub NA-A (${NA_A.players.length}/4)\nTerminal Emu: ${NA_A.terminal}**\n${NA_A.players.join('\n')}`;
+    description += `\n\n**${flag.us} Hub NA-B (${NA_B.players.length}/4)\nTerminal Emu: ${NA_B.terminal}**\n${NA_B.players.join('\n')}`;
+    description += `\n\n**${flag.sg} Hub SG-A (${SG_A.players.length}/4)\nTerminal Emu: ${SG_A.terminal}**\n${SG_A.players.join('\n')}`;
+    description += `\n\n**${flag.sg} Hub SG-B (${SG_B.players.length}/4)\nTerminal Emu: ${SG_B.terminal}**\n${SG_B.players.join('\n')}`;
+    description += `\n\n**${flag.gb} Hub UK-A (${UK_A.players.length}/4)\nTerminal Emu: ${UK_A.terminal}**\n${UK_A.players.join('\n')}`;
+    description += `\n\n**${flag.gb} Hub UK-B (${UK_B.players.length}/4)\nTerminal Emu: ${UK_B.terminal}**\n${UK_B.players.join('\n')}\n`;
     embed = new Discord.RichEmbed({
         timestamp: moment(),
         color: 16711680,
@@ -93,7 +93,7 @@ async function UpdateSession(server, hub) {
         case 'UK':
             api = 'https://derole.co.uk:5555/api/';
             pw = process.env.UK_SERVER_PASSWORD;
-        break;
+            break;
     };
     body = {
         "jsonrpc": "2.0",
@@ -104,7 +104,11 @@ async function UpdateSession(server, hub) {
         }
     }
 
-    let players = [];
+    let HubStatus = {
+        online: true,
+        terminal: "Disabled",
+        players: []
+    }
 
     return fetch(api, {
             method: 'post',
@@ -121,12 +125,12 @@ async function UpdateSession(server, hub) {
             let list = json.result.SessionList;
             list.map(session => {
                 if (session.Username_str === 'terminal') {
-                    players.unshift(`**Terminal Emu: Enabled**`);
+                    HubStatus.terminal = "Enabled";
                 } else {
-                    players.push(`- ${session.Username_str}`);
+                    HubStatus.players.push(`- ${session.Username_str}`);
                 }
             })
-            return players;
+            return HubStatus;
         })
         .catch(err => console.error(err));
 }
