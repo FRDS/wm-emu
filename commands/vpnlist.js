@@ -63,8 +63,8 @@ async function UpdateEmbed() {
     description += `\n\n**${flag.us} Hub NA-B (${NA_B.length}/4):**\n${NA_B.join('\n')}`;
     description += `\n\n**${flag.sg} Hub SG-A (${SG_A.length}/4):**\n${SG_A.join('\n')}`;
     description += `\n\n**${flag.sg} Hub SG-B (${SG_B.length}/4):**\n${SG_B.join('\n')}`;
-    description += `\n\n**${flag.gb} Hub SG-B (${UK_A.length}/4):**\n${UK_A.join('\n')}`;
-    description += `\n\n**${flag.gb} Hub SG-B (${UK_B.length}/4):**\n${UK_B.join('\n')}\n`;
+    description += `\n\n**${flag.gb} Hub UK-A (${UK_A.length}/4):**\n${UK_A.join('\n')}`;
+    description += `\n\n**${flag.gb} Hub UK-B (${UK_B.length}/4):**\n${UK_B.join('\n')}\n`;
     embed = new Discord.RichEmbed({
         timestamp: moment(),
         color: 16711680,
