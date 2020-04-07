@@ -17,7 +17,8 @@ var options = {
     maxPatternLength: 32,
     minMatchCharLength: 1,
     keys: [
-      "course"
+      "course",
+      "fullname"
     ]
   };
 var fuse = new Fuse(courses, options);

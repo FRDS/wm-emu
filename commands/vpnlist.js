@@ -43,8 +43,8 @@ async function UpdateEmbed() {
     let AU_B = await UpdateSession("AU", "AU-B");
     let NA_A = await UpdateSession("NA", "NA-A");
     let NA_B = await UpdateSession("NA", "NA-B");
-    // let SG_A = await UpdateSession("SG", "SG-A");
-    // let SG_B = await UpdateSession("SG", "SG-B");
+    let SG_A = await UpdateSession("SG", "SG-A");
+    let SG_B = await UpdateSession("SG", "SG-B");
     let UK_A = await UpdateSession("UK", "UK-A");
     let UK_B = await UpdateSession("UK", "UK-B");
 
@@ -61,8 +61,8 @@ async function UpdateEmbed() {
     description += `\n\n**${flag.au} Hub AU-B (${AU_B.players.length}/4)\nTerminal Emu: ${AU_B.terminal}**\n${AU_B.players.join('\n')}`;
     description += `\n\n**${flag.us} Hub NA-A (${NA_A.players.length}/4)\nTerminal Emu: ${NA_A.terminal}**\n${NA_A.players.join('\n')}`;
     description += `\n\n**${flag.us} Hub NA-B (${NA_B.players.length}/4)\nTerminal Emu: ${NA_B.terminal}**\n${NA_B.players.join('\n')}`;
-    // description += `\n\n**${flag.sg} Hub SG-A (${SG_A.players.length}/4)\nTerminal Emu: ${SG_A.terminal}**\n${SG_A.players.join('\n')}`;
-    // description += `\n\n**${flag.sg} Hub SG-B (${SG_B.players.length}/4)\nTerminal Emu: ${SG_B.terminal}**\n${SG_B.players.join('\n')}`;
+    description += `\n\n**${flag.sg} Hub SG-A (${SG_A.players.length}/4)\nTerminal Emu: ${SG_A.terminal}**\n${SG_A.players.join('\n')}`;
+    description += `\n\n**${flag.sg} Hub SG-B (${SG_B.players.length}/4)\nTerminal Emu: ${SG_B.terminal}**\n${SG_B.players.join('\n')}`;
     description += `\n\n**${flag.gb} Hub UK-A (${UK_A.players.length}/4)\nTerminal Emu: ${UK_A.terminal}**\n${UK_A.players.join('\n')}`;
     description += `\n\n**${flag.gb} Hub UK-B (${UK_B.players.length}/4)\nTerminal Emu: ${UK_B.terminal}**\n${UK_B.players.join('\n')}\n`;
     embed = new Discord.RichEmbed({
