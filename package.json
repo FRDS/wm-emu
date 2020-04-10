@@ -21,6 +21,7 @@
     "dotenv": "^8.2.0",
     "fs": "0.0.1-security",
     "fuse.js": "^3.6.1",
+    "generate-password": "^1.5.1",
     "get-urls": "^9.2.0",
     "google-spreadsheet": "^2.0.9",
     "moment": "^2.24.0",

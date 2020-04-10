@@ -4,7 +4,6 @@
 
 # Command Test File
 test.js
-events/guildMemberUpdate.js
 commands/guest.js
 
 # Credentials File
