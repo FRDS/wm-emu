@@ -47,7 +47,8 @@ module.exports.run = async (client, message, args) => {
             let approved = "Your account has been made. It's useable in all servers hosted by WM Emu.\n";
             approved += `\`\`\`Username: ${name}\nPassword: ${pass}\`\`\``;
             approved += "Don't share this account!"
-            return mention.send(approved);
+            await mention.send(approved);
+            return message.channel.send(`Approved and sent to ${mention.tag}`);
         }
         return;
     }, {time: 5000});
