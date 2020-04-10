@@ -80,7 +80,7 @@ async function userDelete(name, server, hub) {
         .then(res => res.json())
         .then(json => {
             if (json.hasOwnProperty('error')) throw `❌ ${hub}: \`\`\`${json.error.message}\`\`\``;
-            return `✔ Deleted in ${hub}\n`;
+            return `✅ Deleted in ${hub}\n`;
         })
         .catch(err => {
             throw err;

@@ -106,7 +106,7 @@ async function userCreate(username, pass, server, hub) {
         .then(res => res.json())
         .then(json => {
             if (json.hasOwnProperty('error')) throw `❌ ${hub}: \`\`\`${json.error.message}\`\`\``;
-            return `✔ ${hub}\n`;
+            return `✅ ${hub}\n`;
         })
         .catch(err => {
             throw err;
