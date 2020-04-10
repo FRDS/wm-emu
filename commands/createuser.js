@@ -51,7 +51,7 @@ module.exports.run = async (client, message, args) => {
             mention.send(approved);
             return msg.channel.send(`Approved and sent to ${mention.tag}`);
         } else {
-            return msg.channel.send("Disapproved. Please delete account using `/deleteuser username`");
+            return msg.channel.send("Disapproved. Please delete any made account using `/deleteuser username`");
         }
     }, {
         time: 5000
@@ -93,7 +93,6 @@ async function userCreate(username, pass, server, hub) {
             "policy:MaxConnection_u32": 8,
             "policy:MaxMac_u32": 1,
             "policy:MaxIP_u32": 1,
-            "policy:AutoDisconnect_u32": 1800,
             "policy:FilterIPv6_bool": true
         }
     }
