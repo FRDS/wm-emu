@@ -43,16 +43,19 @@ module.exports.run = async (client, message, args) => {
 
     await message.channel.send(text);
     await message.channel.awaitMessages(msg => {
+        if (msg.author.bot) return;
         if (msg.content.includes("yes")) {
             let approved = "Your account has been made. It's useable in all servers hosted by WM Emu.\n";
             approved += `\`\`\`Username: ${name}\nPassword: ${pass}\`\`\``;
             approved += "Don't share this account!"
             mention.send(approved);
-            return message.channel.send(`Approved and sent to ${mention.tag}`);
+            return msg.channel.send(`Approved and sent to ${mention.tag}`);
         } else {
-        return message.channel.send("Disapproved. Please delete account using `/deleteuser username`");
+            return msg.channel.send("Disapproved. Please delete account using `/deleteuser username`");
         }
-    }, {time: 5000});
+    }, {
+        time: 5000
+    });
 }
 
 async function userCreate(username, pass, server, hub) {
