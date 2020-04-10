@@ -50,7 +50,7 @@ module.exports.run = async (client, message, args) => {
             mention.send(approved);
             return message.channel.send(`Approved and sent to ${mention.tag}`);
         }
-        return;
+        return message.channel.send("Disapproved. Please delete account using `/deleteuser username`");
     }, {time: 5000});
 }
 
