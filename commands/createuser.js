@@ -49,8 +49,9 @@ module.exports.run = async (client, message, args) => {
             approved += "Don't share this account!"
             mention.send(approved);
             return message.channel.send(`Approved and sent to ${mention.tag}`);
-        }
+        } else {
         return message.channel.send("Disapproved. Please delete account using `/deleteuser username`");
+        }
     }, {time: 5000});
 }
 
