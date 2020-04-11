@@ -41,7 +41,7 @@ async function UpdateEmbed() {
     let UK_A = await UpdateSession("UK", "UK-A");
     let UK_B = await UpdateSession("UK", "UK-B");
 
-    totalplayers = AU_A.players.length + AU_B.players.length + NA_A.players.length + NA_B.players.length + SG_A.players.length + SG_B.players.length + UK_A.players.length + AU_B.players.length;
+    let totalplayers = AU_A.players.length + AU_B.players.length + NA_A.players.length + NA_B.players.length + SG_A.players.length + SG_B.players.length + UK_A.players.length + AU_B.players.length;
 
     let embed, author, description;
     let footer = {
@@ -60,7 +60,7 @@ async function UpdateEmbed() {
     description += `\n\n**${flag.sg} Hub SG-B (${SG_B.players.length}/4)\nTerminal Emu: ${SG_B.terminal}**\n${SG_B.players.join('\n')}`;
     description += `\n\n**${flag.gb} Hub UK-A (${UK_A.players.length}/4)\nTerminal Emu: ${UK_A.terminal}**\n${UK_A.players.join('\n')}`;
     description += `\n\n**${flag.gb} Hub UK-B (${UK_B.players.length}/4)\nTerminal Emu: ${UK_B.terminal}**\n${UK_B.players.join('\n')}`;
-    description =+ `\n\n**Total players connected: ${totalplayers}**`
+    description += `\n\n**Total players connected: ${totalplayers}**`;
     embed = new Discord.RichEmbed({
         timestamp: moment(),
         color: 16711680,
