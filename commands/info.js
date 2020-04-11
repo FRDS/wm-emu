@@ -62,7 +62,7 @@ module.exports.conf = {
 };
 
 module.exports.help = {
-    name: "info",
+    name: "tainfo",
     description: "Display general database information",
-    usage: "info"
+    usage: "tainfo"
 };

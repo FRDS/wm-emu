@@ -54,7 +54,7 @@ module.exports.run = async (client, message, args) => {
             return msg.channel.send("Disapproved. Please delete any made account using `/deleteuser username`");
         }
     }, {
-        time: 5000
+        time: 30000
     });
 }
 

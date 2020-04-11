@@ -11,15 +11,8 @@ const flag = {
     "au": `\uD83C\uDDE6\uD83C\uDDFA`,
     "sg": `\uD83C\uDDF8\uD83C\uDDEC`
 };
-// const vpn = require('vpnrpc');
 
 module.exports.run = async (client, message, args) => {
-    // let hub_A = vpn.VpnRpcHubStatus({
-    //     HubName_str: "SG-A",
-    // });
-    // let hub_B = vpn.VpnRpcHubStatus({
-    //     HubName_str: "SG-B",
-    // });
     message.delete();
     let embed = await UpdateEmbed();
     let sent = await message.channel.send('', embed);
@@ -31,7 +24,7 @@ module.exports.run = async (client, message, args) => {
         .then(msg => {
             const fetchedMsg = msg.first();
             setInterval(async function () {
-                embed = await UpdateEmbed();
+                embed = await UpdateEmbed()
                 fetchedMsg.edit('', embed);
                 console.log("Player list updated.");
             }, 30000);
@@ -47,6 +40,8 @@ async function UpdateEmbed() {
     let SG_B = await UpdateSession("SG", "SG-B");
     let UK_A = await UpdateSession("UK", "UK-A");
     let UK_B = await UpdateSession("UK", "UK-B");
+
+    totalplayers = AU_A.players.length + AU_B.players.length + NA_A.players.length + NA_B.players.length + SG_A.players.length + SG_B.players.length + UK_A.players.length + AU_B.players.length;
 
     let embed, author, description;
     let footer = {
@@ -64,7 +59,8 @@ async function UpdateEmbed() {
     description += `\n\n**${flag.sg} Hub SG-A (${SG_A.players.length}/4)\nTerminal Emu: ${SG_A.terminal}**\n${SG_A.players.join('\n')}`;
     description += `\n\n**${flag.sg} Hub SG-B (${SG_B.players.length}/4)\nTerminal Emu: ${SG_B.terminal}**\n${SG_B.players.join('\n')}`;
     description += `\n\n**${flag.gb} Hub UK-A (${UK_A.players.length}/4)\nTerminal Emu: ${UK_A.terminal}**\n${UK_A.players.join('\n')}`;
-    description += `\n\n**${flag.gb} Hub UK-B (${UK_B.players.length}/4)\nTerminal Emu: ${UK_B.terminal}**\n${UK_B.players.join('\n')}\n`;
+    description += `\n\n**${flag.gb} Hub UK-B (${UK_B.players.length}/4)\nTerminal Emu: ${UK_B.terminal}**\n${UK_B.players.join('\n')}`;
+    description =+ `\n\n**Total players connected: ${totalplayers}**`
     embed = new Discord.RichEmbed({
         timestamp: moment(),
         color: 16711680,
