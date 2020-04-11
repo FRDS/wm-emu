@@ -42,9 +42,15 @@ module.exports.run = async (client, message, args) => {
     text += "\n **Approve? (yes/no)**";
 
     await message.channel.send(text);
-    await message.channel.awaitMessages(msg => {
-        if (msg.author.bot) return;
-        if (msg.content.includes("yes")) {
+    const filter = m => m.author.id === message.author.id;
+    return message.channel.awaitMessages(filter, {
+        max: 1,
+        time: 10000,
+        errors: ['time']
+    }).then(collected => {
+        let msg = collected.first();
+        if (msg.content === 'yes') {
+            if (mention === undefined) return msg.channel.send('Approved.');
             let approved = "Your account has been made. It's useable in all servers hosted by WM Emu.\n";
             approved += `\`\`\`Username: ${name}\nPassword: ${pass}\`\`\``;
             approved += "Don't share this account!"
@@ -52,9 +58,7 @@ module.exports.run = async (client, message, args) => {
             return msg.channel.send(`Approved and sent to ${mention.tag}`);
         } else {
             return msg.channel.send("Disapproved. Please delete any made account using `/deleteuser username`");
-        }
-    }, {
-        time: 30000
+        }  
     });
 }
 
