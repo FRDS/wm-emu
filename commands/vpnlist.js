@@ -32,8 +32,8 @@ module.exports.run = async (client, message, args) => {
 }
 
 async function UpdateEmbed() {
-    let AU_A = await UpdateSession("AU", "AU-A");
-    let AU_B = await UpdateSession("AU", "AU-B");
+    // let AU_A = await UpdateSession("AU", "AU-A");
+    // let AU_B = await UpdateSession("AU", "AU-B");
     let NA_A = await UpdateSession("NA", "NA-A");
     let NA_B = await UpdateSession("NA", "NA-B");
     let SG_A = await UpdateSession("SG", "SG-A");
@@ -41,7 +41,7 @@ async function UpdateEmbed() {
     let UK_A = await UpdateSession("UK", "UK-A");
     let UK_B = await UpdateSession("UK", "UK-B");
 
-    let totalplayers = AU_A.players.length + AU_B.players.length + NA_A.players.length + NA_B.players.length + SG_A.players.length + SG_B.players.length + UK_A.players.length + AU_B.players.length;
+    // let totalplayers = NA_A.players.length + NA_B.players.length + SG_A.players.length + SG_B.players.length + UK_A.players.length + AU_B.players.length;
 
     let embed, author, description;
     let footer = {
@@ -52,15 +52,15 @@ async function UpdateEmbed() {
         "name": "VPN Player List",
         "icon_url": "https://cdn.discordapp.com/avatars/435142969209651201/459e8f02ab9ccfc658b5aea416ea1775.png"
     };
-    description = `**${flag.au} Hub AU-A (${AU_A.players.length}/4)\nTerminal Emu: ${AU_A.terminal}**\n${AU_A.players.join('\n')}`;
-    description += `\n\n**${flag.au} Hub AU-B (${AU_B.players.length}/4)\nTerminal Emu: ${AU_B.terminal}**\n${AU_B.players.join('\n')}`;
+    // description = `**${flag.au} Hub AU-A (${AU_A.players.length}/4)\nTerminal Emu: ${AU_A.terminal}**\n${AU_A.players.join('\n')}`;
+    // description += `\n\n**${flag.au} Hub AU-B (${AU_B.players.length}/4)\nTerminal Emu: ${AU_B.terminal}**\n${AU_B.players.join('\n')}`;
     description += `\n\n**${flag.us} Hub NA-A (${NA_A.players.length}/4)\nTerminal Emu: ${NA_A.terminal}**\n${NA_A.players.join('\n')}`;
     description += `\n\n**${flag.us} Hub NA-B (${NA_B.players.length}/4)\nTerminal Emu: ${NA_B.terminal}**\n${NA_B.players.join('\n')}`;
     description += `\n\n**${flag.sg} Hub SG-A (${SG_A.players.length}/4)\nTerminal Emu: ${SG_A.terminal}**\n${SG_A.players.join('\n')}`;
     description += `\n\n**${flag.sg} Hub SG-B (${SG_B.players.length}/4)\nTerminal Emu: ${SG_B.terminal}**\n${SG_B.players.join('\n')}`;
     description += `\n\n**${flag.gb} Hub UK-A (${UK_A.players.length}/4)\nTerminal Emu: ${UK_A.terminal}**\n${UK_A.players.join('\n')}`;
     description += `\n\n**${flag.gb} Hub UK-B (${UK_B.players.length}/4)\nTerminal Emu: ${UK_B.terminal}**\n${UK_B.players.join('\n')}`;
-    description += `\n\n**Total players connected: ${totalplayers}**`;
+    // description += `\n\n**Total players connected: ${totalplayers}**`;
     embed = new Discord.RichEmbed({
         timestamp: moment(),
         color: 16711680,
