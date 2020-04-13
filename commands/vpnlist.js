@@ -13,6 +13,7 @@ const flag = {
 };
 
 module.exports.run = async (client, message, args) => {
+    let faradise = await message.guild.members.get(process.env.OWNER_ID);
     message.delete();
     let embed = await UpdateEmbed();
     let sent = await message.channel.send('', embed);
@@ -32,15 +33,15 @@ module.exports.run = async (client, message, args) => {
 }
 
 async function UpdateEmbed() {
-    // let AU_A = await UpdateSession("AU", "AU-A");
-    // let AU_B = await UpdateSession("AU", "AU-B");
+    let AU_A = await UpdateSession("AU", "AU-A");
+    let AU_B = await UpdateSession("AU", "AU-B");
     let NA_A = await UpdateSession("NA", "NA-A");
     let NA_B = await UpdateSession("NA", "NA-B");
     let SG_A = await UpdateSession("SG", "SG-A");
     let SG_B = await UpdateSession("SG", "SG-B");
     let UK_A = await UpdateSession("UK", "UK-A");
     let UK_B = await UpdateSession("UK", "UK-B");
-    let hubs = [NA_A, NA_B, SG_A, SG_B, UK_A, UK_B];
+    let hubs = [AU_A, AU_B, NA_A, NA_B, SG_A, SG_B, UK_A, UK_B];
 
     let embed, author
     let description = '';
@@ -52,8 +53,8 @@ async function UpdateEmbed() {
         "name": "VPN Player List",
         "icon_url": "https://cdn.discordapp.com/avatars/435142969209651201/459e8f02ab9ccfc658b5aea416ea1775.png"
     };
-    // if (AU_A.online) description += `\n\n**${flag.au} Hub AU-A (${AU_A.players.length}/4)\nTerminal Emu: ${AU_A.terminal}**\n${AU_A.players.join('\n')}`;
-    // if (AU_B.online) description += `\n\n**${flag.au} Hub AU-B (${AU_B.players.length}/4)\nTerminal Emu: ${AU_B.terminal}**\n${AU_B.players.join('\n')}`;
+    if (AU_A.online) description += `\n\n**${flag.au} Hub AU-A (${AU_A.players.length}/4)\nTerminal Emu: ${AU_A.terminal}**\n${AU_A.players.join('\n')}`;
+    if (AU_B.online) description += `\n\n**${flag.au} Hub AU-B (${AU_B.players.length}/4)\nTerminal Emu: ${AU_B.terminal}**\n${AU_B.players.join('\n')}`;
     if (NA_A.online) description += `\n\n**${flag.us} Hub NA-A (${NA_A.players.length}/4)\nTerminal Emu: ${NA_A.terminal}**\n${NA_A.players.join('\n')}`;
     if (NA_B.online) description += `\n\n**${flag.us} Hub NA-B (${NA_B.players.length}/4)\nTerminal Emu: ${NA_B.terminal}**\n${NA_B.players.join('\n')}`;
     if (SG_A.online) description += `\n\n**${flag.sg} Hub SG-A (${SG_A.players.length}/4)\nTerminal Emu: ${SG_A.terminal}**\n${SG_A.players.join('\n')}`;
@@ -128,7 +129,8 @@ async function UpdateSession(server, hub) {
             })
             return HubStatus;
         }).catch(err => {
-            console.error(err)
+            console.error(`Error at ${server}, Hub ${hub}:\`\`\`err\`\`\``);
+            faradise.send(`Error at ${server}, Hub ${hub}:\`\`\`err\`\`\``);
             HubStatus.online = false;
             return HubStatus;
         });
