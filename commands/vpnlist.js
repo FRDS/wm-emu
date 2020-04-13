@@ -43,7 +43,8 @@ async function UpdateEmbed() {
 
     // let totalplayers = NA_A.players.length + NA_B.players.length + SG_A.players.length + SG_B.players.length + UK_A.players.length + AU_B.players.length;
 
-    let embed, author, description;
+    let embed, author
+    let description = '';
     let footer = {
         "icon_url": "https://cdn.discordapp.com/icons/380717547349344256/41cd75b22d6c2d43c56b4e0b1aa595d8.png",
         "text": "WM Emulation Server"
@@ -54,7 +55,7 @@ async function UpdateEmbed() {
     };
     // description = `**${flag.au} Hub AU-A (${AU_A.players.length}/4)\nTerminal Emu: ${AU_A.terminal}**\n${AU_A.players.join('\n')}`;
     // description += `\n\n**${flag.au} Hub AU-B (${AU_B.players.length}/4)\nTerminal Emu: ${AU_B.terminal}**\n${AU_B.players.join('\n')}`;
-    description = `\n\n**${flag.us} Hub NA-A (${NA_A.players.length}/4)\nTerminal Emu: ${NA_A.terminal}**\n${NA_A.players.join('\n')}`;
+    description += `\n\n**${flag.us} Hub NA-A (${NA_A.players.length}/4)\nTerminal Emu: ${NA_A.terminal}**\n${NA_A.players.join('\n')}`;
     description += `\n\n**${flag.us} Hub NA-B (${NA_B.players.length}/4)\nTerminal Emu: ${NA_B.terminal}**\n${NA_B.players.join('\n')}`;
     description += `\n\n**${flag.sg} Hub SG-A (${SG_A.players.length}/4)\nTerminal Emu: ${SG_A.terminal}**\n${SG_A.players.join('\n')}`;
     description += `\n\n**${flag.sg} Hub SG-B (${SG_B.players.length}/4)\nTerminal Emu: ${SG_B.terminal}**\n${SG_B.players.join('\n')}`;
