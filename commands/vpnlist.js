@@ -12,24 +12,17 @@ const flag = {
     "sg": `\uD83C\uDDF8\uD83C\uDDEC`
 };
 
-module.exports.run = async (client, message, args) => {
-    let faradise = await message.guild.members.get(process.env.OWNER_ID);
-    message.delete();
+module.exports.run = async (client) => {
+    let channel = await client.channels.get('693994153121677402');
+    await channel.bulkDelete(5);
     let embed = await UpdateEmbed();
-    let sent = await message.channel.send('', embed);
-
-    message.channel.fetchMessages({
-            around: sent.id,
-            limit: 1
-        })
-        .then(msg => {
-            const fetchedMsg = msg.first();
-            setInterval(async function () {
-                embed = await UpdateEmbed()
-                fetchedMsg.edit('', embed);
-                console.log("Player list updated.");
-            }, 30000);
-        });
+    let sent = await channel.send('', embed);
+    
+    setInterval(async function () {
+        embed = await UpdateEmbed()
+        sent.edit('', embed);
+        console.log("Player list updated.");
+    }, 30000);
 }
 
 async function UpdateEmbed() {
@@ -130,7 +123,6 @@ async function UpdateSession(server, hub) {
             return HubStatus;
         }).catch(err => {
             console.error(`Error at ${server}, Hub ${hub}:\`\`\`err\`\`\``);
-            faradise.send(`Error at ${server}, Hub ${hub}:\`\`\`err\`\`\``);
             HubStatus.online = false;
             return HubStatus;
         });
