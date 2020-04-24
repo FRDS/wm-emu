@@ -36,7 +36,7 @@ async function UpdateEmbed() {
     // let SG_B = await UpdateSession("SG", "SG-B");
     let UK_A = await UpdateSession("UK", "UK-A");
     let UK_B = await UpdateSession("UK", "UK-B");
-    let hubs = [AU_A, AU_B, NA_A, NA_B, UK_A, UK_B];
+    let hubs = [AU_A, AU_B, AU_C, AU_D, NA_A, NA_B, UK_A, UK_B];
 
     let embed, author
     let description = '';

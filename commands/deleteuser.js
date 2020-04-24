@@ -8,24 +8,24 @@ module.exports.run = async (client, message, args) => {
     if (args.length < 1) return message.channel.send('Please specify a **username!**');
     if (args[0] === 'terminal') return message.channel.send('Deleting terminal account is not allowed!');
     let name = args[0];
-    let text;
+    let text = '';
 
     text += await userDelete(name, "AU", "AU-A").catch(err => {
         return err;
     });
-    text+= await userDelete(name, "AU", "AU-B").catch(err => {
+    text += await userDelete(name, "AU", "AU-B").catch(err => {
         return err;
     });
-    text+= await userDelete(name, "AU", "AU-C").catch(err => {
+    text += await userDelete(name, "AU", "AU-C").catch(err => {
         return err;
     });
-    text+= await userDelete(name, "AU", "AU-D").catch(err => {
+    text += await userDelete(name, "AU", "AU-D").catch(err => {
         return err;
     });
-    text+= await userDelete(name, "NA", "NA-A").catch(err => {
+    text += await userDelete(name, "NA", "NA-A").catch(err => {
         return err;
     });
-    text+= await userDelete(name, "NA", "NA-B").catch(err => {
+    text += await userDelete(name, "NA", "NA-B").catch(err => {
         return err;
     });
     // text+= await userDelete(name, "SG", "SG-A").catch(err => {

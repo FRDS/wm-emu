@@ -13,7 +13,7 @@ module.exports.run = async (client, message, args) => {
         numbers: true
     });
     let mention = message.mentions.users.first();
-    let text;
+    let text = '';
 
     text += await userCreate(name, pass, "AU", "AU-A").catch(err => {
         return err;
