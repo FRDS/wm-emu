@@ -15,6 +15,12 @@ module.exports.run = async (client, message, args) => {
     text+= await userDelete(name, "AU", "AU-B").catch(err => {
         return err;
     });
+    let text = await userDelete(name, "AU", "AU-C").catch(err => {
+        return err;
+    });
+    text+= await userDelete(name, "AU", "AU-D").catch(err => {
+        return err;
+    });
     text+= await userDelete(name, "NA", "NA-A").catch(err => {
         return err;
     });

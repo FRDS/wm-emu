@@ -28,6 +28,8 @@ module.exports.run = async (client) => {
 async function UpdateEmbed() {
     let AU_A = await UpdateSession("AU", "AU-A");
     let AU_B = await UpdateSession("AU", "AU-B");
+    let AU_C = await UpdateSession("AU", "AU-C");
+    let AU_D = await UpdateSession("AU", "AU-D");
     let NA_A = await UpdateSession("NA", "NA-A");
     let NA_B = await UpdateSession("NA", "NA-B");
     // let SG_A = await UpdateSession("SG", "SG-A");
@@ -48,6 +50,8 @@ async function UpdateEmbed() {
     };
     if (AU_A.online) description += `\n\n**${flag.au} Hub AU-A (${AU_A.players.length}/4)\nTerminal Emu: ${AU_A.terminal}**\n${AU_A.players.join('\n')}`;
     if (AU_B.online) description += `\n\n**${flag.au} Hub AU-B (${AU_B.players.length}/4)\nTerminal Emu: ${AU_B.terminal}**\n${AU_B.players.join('\n')}`;
+    if (AU_C.online) description += `\n\n**${flag.au} Hub AU-C (${AU_C.players.length}/4)\nTerminal Emu: ${AU_C.terminal}**\n${AU_C.players.join('\n')}`;
+    if (AU_D.online) description += `\n\n**${flag.au} Hub AU-D (${AU_D.players.length}/4)\nTerminal Emu: ${AU_D.terminal}**\n${AU_D.players.join('\n')}`;
     if (NA_A.online) description += `\n\n**${flag.us} Hub NA-A (${NA_A.players.length}/4)\nTerminal Emu: ${NA_A.terminal}**\n${NA_A.players.join('\n')}`;
     if (NA_B.online) description += `\n\n**${flag.us} Hub NA-B (${NA_B.players.length}/4)\nTerminal Emu: ${NA_B.terminal}**\n${NA_B.players.join('\n')}`;
     // if (SG_A.online) description += `\n\n**${flag.sg} Hub SG-A (${SG_A.players.length}/4)\nTerminal Emu: ${SG_A.terminal}**\n${SG_A.players.join('\n')}`;
