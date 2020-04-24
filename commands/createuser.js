@@ -7,7 +7,6 @@ const agent = new https.Agent({
 
 module.exports.run = async (client, message, args) => {
     if (args.length < 1) return message.channel.send('Please specify a **username!**');
-    if (!message.mentions.users) return message.channel.send('Please specify a **tag!**');
     let name = args[0];
     let pass = gen.generate({
         length: 8,
@@ -50,15 +49,18 @@ module.exports.run = async (client, message, args) => {
     }).then(collected => {
         let msg = collected.first();
         if (msg.content === 'yes') {
-            if (mention === undefined) return msg.channel.send('Approved.');
             let approved = "Your account has been made. It's useable in all servers hosted by WM Emu.\n";
             approved += `\`\`\`Username: ${name}\nPassword: ${pass}\`\`\``;
             approved += "Don't share this account!"
-            mention.send(approved);
-            return msg.channel.send(`Approved and sent to ${mention.tag}`);
+            if (mention === undefined) {
+                return msg.channel.send(approved);
+            } else {
+                mention.send(approved);
+                return msg.channel.send(`Approved and sent to ${mention.tag}`);
+            }
         } else {
             return msg.channel.send("Disapproved. Please delete any made account using `/deleteuser username`");
-        }  
+        }
     });
 }
 
