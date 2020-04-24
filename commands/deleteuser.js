@@ -21,12 +21,12 @@ module.exports.run = async (client, message, args) => {
     text+= await userDelete(name, "NA", "NA-B").catch(err => {
         return err;
     });
-    text+= await userDelete(name, "SG", "SG-A").catch(err => {
-        return err;
-    });
-    text+= await userDelete(name, "SG", "SG-B").catch(err => {
-        return err;
-    });
+    // text+= await userDelete(name, "SG", "SG-A").catch(err => {
+    //     return err;
+    // });
+    // text+= await userDelete(name, "SG", "SG-B").catch(err => {
+    //     return err;
+    // });
     text+= await userDelete(name, "UK", "UK-A").catch(err => {
         return err;
     });
