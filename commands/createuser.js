@@ -13,14 +13,15 @@ module.exports.run = async (client, message, args) => {
         numbers: true
     });
     let mention = message.mentions.users.first();
+    let text;
 
-    let text = await userCreate(name, pass, "AU", "AU-A").catch(err => {
+    text += await userCreate(name, pass, "AU", "AU-A").catch(err => {
         return err;
     });
     text += await userCreate(name, pass, "AU", "AU-B").catch(err => {
         return err;
     });
-    let text = await userCreate(name, pass, "AU", "AU-C").catch(err => {
+    text += await userCreate(name, pass, "AU", "AU-C").catch(err => {
         return err;
     });
     text += await userCreate(name, pass, "AU", "AU-D").catch(err => {
