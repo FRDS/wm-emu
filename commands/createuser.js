@@ -26,12 +26,12 @@ module.exports.run = async (client, message, args) => {
     text += await userCreate(name, pass, "NA", "NA-B").catch(err => {
         return err;
     });
-    text += await userCreate(name, pass, "SG", "SG-A").catch(err => {
-        return err;
-    });
-    text += await userCreate(name, pass, "SG", "SG-B").catch(err => {
-        return err;
-    });
+    // text += await userCreate(name, pass, "SG", "SG-A").catch(err => {
+    //     return err;
+    // });
+    // text += await userCreate(name, pass, "SG", "SG-B").catch(err => {
+    //     return err;
+    // });
     text += await userCreate(name, pass, "UK", "UK-A").catch(err => {
         return err;
     });
