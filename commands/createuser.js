@@ -21,24 +21,27 @@ module.exports.run = async (client, message, args) => {
     text += await userCreate(name, pass, "AU", "AU-B").catch(err => {
         return err;
     });
-    text += await userCreate(name, pass, "AU", "AU-C").catch(err => {
-        return err;
-    });
-    text += await userCreate(name, pass, "AU", "AU-D").catch(err => {
-        return err;
-    });
+    // text += await userCreate(name, pass, "AU", "AU-C").catch(err => {
+    //     return err;
+    // });
+    // text += await userCreate(name, pass, "AU", "AU-D").catch(err => {
+    //     return err;
+    // });
     text += await userCreate(name, pass, "NA", "NA-A").catch(err => {
         return err;
     });
     text += await userCreate(name, pass, "NA", "NA-B").catch(err => {
         return err;
     });
-    // text += await userCreate(name, pass, "SG", "SG-A").catch(err => {
-    //     return err;
-    // });
-    // text += await userCreate(name, pass, "SG", "SG-B").catch(err => {
-    //     return err;
-    // });
+    text += await userCreate(name, pass, "SG", "SG-A").catch(err => {
+        return err;
+    });
+    text += await userCreate(name, pass, "SG", "SG-B").catch(err => {
+        return err;
+    });
+    text += await userCreate(name, pass, "SG", "SG-C").catch(err => {
+        return err;
+    });
     text += await userCreate(name, pass, "UK", "UK-A").catch(err => {
         return err;
     });
@@ -75,7 +78,7 @@ async function userCreate(username, pass, server, hub) {
     let api, pw, body;
     switch (server) {
         case 'SG':
-            api = 'https://34.87.52.82:443/api/';
+            api = 'https://210.16.120.12:5555/api/';
             pw = process.env.SG_SERVER_PASSWORD;
             break;
         case 'NA':

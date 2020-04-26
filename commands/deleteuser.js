@@ -16,24 +16,27 @@ module.exports.run = async (client, message, args) => {
     text += await userDelete(name, "AU", "AU-B").catch(err => {
         return err;
     });
-    text += await userDelete(name, "AU", "AU-C").catch(err => {
-        return err;
-    });
-    text += await userDelete(name, "AU", "AU-D").catch(err => {
-        return err;
-    });
+    // text += await userDelete(name, "AU", "AU-C").catch(err => {
+    //     return err;
+    // });
+    // text += await userDelete(name, "AU", "AU-D").catch(err => {
+    //     return err;
+    // });
     text += await userDelete(name, "NA", "NA-A").catch(err => {
         return err;
     });
     text += await userDelete(name, "NA", "NA-B").catch(err => {
         return err;
     });
-    // text+= await userDelete(name, "SG", "SG-A").catch(err => {
-    //     return err;
-    // });
-    // text+= await userDelete(name, "SG", "SG-B").catch(err => {
-    //     return err;
-    // });
+    text+= await userDelete(name, "SG", "SG-A").catch(err => {
+        return err;
+    });
+    text+= await userDelete(name, "SG", "SG-B").catch(err => {
+        return err;
+    });
+    text+= await userDelete(name, "SG", "SG-C").catch(err => {
+        return err;
+    });
     text+= await userDelete(name, "UK", "UK-A").catch(err => {
         return err;
     });
@@ -48,7 +51,7 @@ async function userDelete(name, server, hub) {
     let api, pw, body;
     switch (server) {
         case 'SG':
-            api = 'https://34.87.52.82:443/api/';
+            api = 'https://210.16.120.12:5555/api/';
             pw = process.env.SG_SERVER_PASSWORD;
             break;
         case 'NA':
