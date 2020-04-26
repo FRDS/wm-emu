@@ -57,7 +57,7 @@ async function UpdateEmbed() {
     if (NA_B.online) description += `\n\n**${flag.us} Hub NA-B (${NA_B.players.length}/4)\nTerminal Emu: ${NA_B.terminal}**\n${NA_B.players.join('\n')}`;
     if (SG_A.online) description += `\n\n**${flag.sg} Hub SG-A (${SG_A.players.length}/4)\nTerminal Emu: ${SG_A.terminal}**\n${SG_A.players.join('\n')}`;
     if (SG_B.online) description += `\n\n**${flag.sg} Hub SG-B (${SG_B.players.length}/4)\nTerminal Emu: ${SG_B.terminal}**\n${SG_B.players.join('\n')}`;
-    if (SG_C.online) description += `\n\n**${flag.SG} Hub SG-C (${SG_C.players.length}/4)\nTerminal Emu: ${SG_C.terminal}**\n${SG_C.players.join('\n')}`;
+    if (SG_C.online) description += `\n\n**${flag.sg} Hub SG-C (${SG_C.players.length}/4)\nTerminal Emu: ${SG_C.terminal}**\n${SG_C.players.join('\n')}`;
     if (UK_A.online) description += `\n\n**${flag.gb} Hub UK-A (${UK_A.players.length}/4)\nTerminal Emu: ${UK_A.terminal}**\n${UK_A.players.join('\n')}`;
     if (UK_B.online) description += `\n\n**${flag.gb} Hub UK-B (${UK_B.players.length}/4)\nTerminal Emu: ${UK_B.terminal}**\n${UK_B.players.join('\n')}`;
     description += await getTotal(hubs);
