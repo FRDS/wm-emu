@@ -9,7 +9,8 @@ const flag = {
     "us": `\uD83C\uDDFA\uD83C\uDDF8`,
     "gb": `\uD83C\uDDEC\uD83C\uDDE7`,
     "au": `\uD83C\uDDE6\uD83C\uDDFA`,
-    "sg": `\uD83C\uDDF8\uD83C\uDDEC`
+    "sg": `\uD83C\uDDF8\uD83C\uDDEC`,
+    "hk": `\uD83C\uDDED\uD83C\uDDF0`
 };
 
 module.exports.run = async (client) => {
@@ -17,21 +18,21 @@ module.exports.run = async (client) => {
     await channel.bulkDelete(5);
     let embed = await UpdateEmbed();
     let sent = await channel.send('', embed);
-    
+
     setInterval(async function () {
         embed = await UpdateEmbed()
         sent.edit('', embed);
         console.log("Player list updated.");
-    }, 30000);
+    }, 40000);
 }
 
 async function UpdateEmbed() {
     let AU_A = await UpdateSession("AU", "AU-A");
     let AU_B = await UpdateSession("AU", "AU-B");
-    // let AU_C = await UpdateSession("AU", "AU-C");
-    // let AU_D = await UpdateSession("AU", "AU-D");
     let NA_A = await UpdateSession("NA", "NA-A");
     let NA_B = await UpdateSession("NA", "NA-B");
+    // let HK_A = await UpdateSession("HK", "HK-A");
+    // let HK_B = await UpdateSession("HK", "HK-B");
     let SG_A = await UpdateSession("SG", "SG-A");
     let SG_B = await UpdateSession("SG", "SG-B");
     let SG_C = await UpdateSession("SG", "SG-C");
@@ -51,10 +52,10 @@ async function UpdateEmbed() {
     };
     if (AU_A.online) description += `\n\n**${flag.au} Hub AU-A (${AU_A.players.length}/4)\nTerminal Emu: ${AU_A.terminal}**\n${AU_A.players.join('\n')}`;
     if (AU_B.online) description += `\n\n**${flag.au} Hub AU-B (${AU_B.players.length}/4)\nTerminal Emu: ${AU_B.terminal}**\n${AU_B.players.join('\n')}`;
-    // if (AU_C.online) description += `\n\n**${flag.au} Hub AU-C (${AU_C.players.length}/4)\nTerminal Emu: ${AU_C.terminal}**\n${AU_C.players.join('\n')}`;
-    // if (AU_D.online) description += `\n\n**${flag.au} Hub AU-D (${AU_D.players.length}/4)\nTerminal Emu: ${AU_D.terminal}**\n${AU_D.players.join('\n')}`;
     if (NA_A.online) description += `\n\n**${flag.us} Hub NA-A (${NA_A.players.length}/4)\nTerminal Emu: ${NA_A.terminal}**\n${NA_A.players.join('\n')}`;
     if (NA_B.online) description += `\n\n**${flag.us} Hub NA-B (${NA_B.players.length}/4)\nTerminal Emu: ${NA_B.terminal}**\n${NA_B.players.join('\n')}`;
+    // if (HK_A.online) description += `\n\n**${flag.hk} Hub HK-A (${HK_A.players.length}/4)\nTerminal Emu: ${HK_A.terminal}**\n${HK_A.players.join('\n')}`;
+    // if (HK_B.online) description += `\n\n**${flag.hk} Hub HK-B (${HK_B.players.length}/4)\nTerminal Emu: ${HK_B.terminal}**\n${HK_B.players.join('\n')}`;
     if (SG_A.online) description += `\n\n**${flag.sg} Hub SG-A (${SG_A.players.length}/4)\nTerminal Emu: ${SG_A.terminal}**\n${SG_A.players.join('\n')}`;
     if (SG_B.online) description += `\n\n**${flag.sg} Hub SG-B (${SG_B.players.length}/4)\nTerminal Emu: ${SG_B.terminal}**\n${SG_B.players.join('\n')}`;
     if (SG_C.online) description += `\n\n**${flag.sg} Hub SG-C (${SG_C.players.length}/4)\nTerminal Emu: ${SG_C.terminal}**\n${SG_C.players.join('\n')}`;
@@ -74,6 +75,10 @@ async function UpdateEmbed() {
 async function UpdateSession(server, hub) {
     let api, pw, body;
     switch (server) {
+        case 'HK':
+            api = 'https://35.241.96.172:443/api/';
+            pw = process.env.HK_SERVER_PASSWORD;
+            break;
         case 'SG':
             api = 'https://210.16.120.12:5555/api/';
             pw = process.env.SG_SERVER_PASSWORD;
@@ -134,7 +139,7 @@ async function UpdateSession(server, hub) {
         });
 }
 
-async function getTotal(hubs){
+async function getTotal(hubs) {
     let total = 0;
     await hubs.filter(hub => hub.online === true)
         .map(hub => total += hub.players.length)
