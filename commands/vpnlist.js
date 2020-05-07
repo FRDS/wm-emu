@@ -36,7 +36,7 @@ async function UpdateEmbed() {
     let SG_A = await UpdateSession("SG", "SG-A");
     let SG_B = await UpdateSession("SG", "SG-B");
     let SG_C = await UpdateSession("SG", "SG-C");
-    let SG_C = await UpdateSession("SG", "SG-D");
+    let SG_D = await UpdateSession("SG", "SG-D");
     let UK_A = await UpdateSession("UK", "UK-A");
     let UK_B = await UpdateSession("UK", "UK-B");
     let hubs = [AU_A, AU_B, HK_A, HK_B, SG_A, SG_B, SG_C, SG_D, NA_A, NA_B, UK_A, UK_B];
