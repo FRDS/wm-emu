@@ -36,9 +36,10 @@ async function UpdateEmbed() {
     let SG_A = await UpdateSession("SG", "SG-A");
     let SG_B = await UpdateSession("SG", "SG-B");
     let SG_C = await UpdateSession("SG", "SG-C");
+    let SG_C = await UpdateSession("SG", "SG-D");
     let UK_A = await UpdateSession("UK", "UK-A");
     let UK_B = await UpdateSession("UK", "UK-B");
-    let hubs = [AU_A, AU_B, HK_A, HK_B, SG_A, SG_B, SG_C, NA_A, NA_B, UK_A, UK_B];
+    let hubs = [AU_A, AU_B, HK_A, HK_B, SG_A, SG_B, SG_C, SG_D, NA_A, NA_B, UK_A, UK_B];
 
     let embed, author
     let description = '';
@@ -59,6 +60,7 @@ async function UpdateEmbed() {
     if (SG_A.online) description += `\n\n**${flag.sg} Hub SG-A (${SG_A.players.length}/4)\nTerminal Emu: ${SG_A.terminal}**\n${SG_A.players.join('\n')}`;
     if (SG_B.online) description += `\n\n**${flag.sg} Hub SG-B (${SG_B.players.length}/4)\nTerminal Emu: ${SG_B.terminal}**\n${SG_B.players.join('\n')}`;
     if (SG_C.online) description += `\n\n**${flag.sg} Hub SG-C (${SG_C.players.length}/4)\nTerminal Emu: ${SG_C.terminal}**\n${SG_C.players.join('\n')}`;
+    if (SG_D.online) description += `\n\n**${flag.sg} Hub SG-D (${SG_D.players.length}/4)\nTerminal Emu: ${SG_D.terminal}**\n${SG_D.players.join('\n')}`;
     if (UK_A.online) description += `\n\n**${flag.gb} Hub UK-A (${UK_A.players.length}/4)\nTerminal Emu: ${UK_A.terminal}**\n${UK_A.players.join('\n')}`;
     if (UK_B.online) description += `\n\n**${flag.gb} Hub UK-B (${UK_B.players.length}/4)\nTerminal Emu: ${UK_B.terminal}**\n${UK_B.players.join('\n')}`;
     description += await getTotal(hubs);

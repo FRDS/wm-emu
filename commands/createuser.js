@@ -42,6 +42,9 @@ module.exports.run = async (client, message, args) => {
     text += await userCreate(name, pass, "SG", "SG-C").catch(err => {
         return err;
     });
+    text += await userCreate(name, pass, "SG", "SG-D").catch(err => {
+        return err;
+    });
     text += await userCreate(name, pass, "UK", "UK-A").catch(err => {
         return err;
     });
