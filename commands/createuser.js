@@ -53,7 +53,7 @@ module.exports.run = async (client, message, args) => {
     });
     text += "\n **Approve? (yes/no)**";
 
-    await message.channel.send(text);
+    let status = await message.channel.send(text);
     const filter = m => m.author.id === message.author.id && (m.content.toLowerCase() === 'yes' || m.content.toLowerCase() === 'no');
     return message.channel.awaitMessages(filter, {
         maxMatches: 1,
@@ -69,6 +69,7 @@ module.exports.run = async (client, message, args) => {
         mention.send(approved);
         return confirm.channel.send(`Approved and sent to ${mention.tag}`);
     }).catch(()=> {
+        status.delete();
         return message.channel.send(`Timeout. Delete account with \`/deleteuser <username>\``);
     });
 }
