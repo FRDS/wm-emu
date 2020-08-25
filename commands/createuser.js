@@ -61,7 +61,8 @@ module.exports.run = async (client, message, args) => {
         errors: ['time']
     }).then(collected => {
         let confirm = collected.first();
-        if (content.toLowerCase() === 'no') return confirm.channel.send(`Disapproved. Delete account with \`/deleteuser <username>\``);
+        console.log(confirm.content);
+        if (confirm.content.toLowerCase() === 'no') return confirm.channel.send(`Disapproved. Delete account with \`/deleteuser <username>\``);
         let approved = "Your account has been made. It's useable in all servers hosted by WM Emu.\n";
         approved += `\`\`\`Username: ${name}\nPassword: ${pass}\`\`\``;
         approved += "Don't share this account!"
