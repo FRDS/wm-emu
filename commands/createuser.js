@@ -54,26 +54,22 @@ module.exports.run = async (client, message, args) => {
     text += "\n **Approve? (yes/no)**";
 
     await message.channel.send(text);
-    const filter = m => m.author.id === message.author.id;
+    const filter = m => m.author.id === message.author.id && (m.content.toLowerCase() === 'yes' || m.content.toLowerCase() === 'no');
     return message.channel.awaitMessages(filter, {
-        max: 1,
+        maxMatches: 1,
         time: 10000,
         errors: ['time']
     }).then(collected => {
-        let msg = collected.first();
-        if (msg.content === 'yes') {
-            let approved = "Your account has been made. It's useable in all servers hosted by WM Emu.\n";
-            approved += `\`\`\`Username: ${name}\nPassword: ${pass}\`\`\``;
-            approved += "Don't share this account!"
-            if (mention === undefined) {
-                return msg.channel.send(approved);
-            } else {
-                mention.send(approved);
-                return msg.channel.send(`Approved and sent to ${mention.tag}`);
-            }
-        } else {
-            return msg.channel.send("Disapproved. Please delete any made account using `/deleteuser username`");
-        }
+        let confirm = collected.first();
+        if (content.toLowerCase() === 'no') return confirm.channel.send(`Disapproved. Delete account with \`/deleteuser <username>\``);
+        let approved = "Your account has been made. It's useable in all servers hosted by WM Emu.\n";
+        approved += `\`\`\`Username: ${name}\nPassword: ${pass}\`\`\``;
+        approved += "Don't share this account!"
+        if (mention === undefined) return confirm.channel.send(approved);
+        mention.send(approved);
+        return confirm.channel.send(`Approved and sent to ${mention.tag}`);
+    }).catch(()=> {
+        return message.channel.send(`Timeout. Delete account with \`/deleteuser <username>\``);
     });
 }
 
