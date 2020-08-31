@@ -21,12 +21,12 @@ module.exports.run = async (client, message, args) => {
     text += await userCreate(name, pass, "AU", "AU-B").catch(err => {
         return err;
     });
-    text += await userCreate(name, pass, "HK", "HK-A").catch(err => {
-        return err;
-    });
-    text += await userCreate(name, pass, "HK", "HK-B").catch(err => {
-        return err;
-    });
+    // text += await userCreate(name, pass, "HK", "HK-A").catch(err => {
+    //     return err;
+    // });
+    // text += await userCreate(name, pass, "HK", "HK-B").catch(err => {
+    //     return err;
+    // });
     text += await userCreate(name, pass, "NA", "NA-A").catch(err => {
         return err;
     });
@@ -78,10 +78,10 @@ module.exports.run = async (client, message, args) => {
 async function userCreate(username, pass, server, hub) {
     let api, pw, body;
     switch (server) {
-        case 'HK':
-            api = 'https://35.241.96.172:443/api/';
-            pw = process.env.HK_SERVER_PASSWORD;
-            break;
+        // case 'HK':
+        //     api = 'https://35.241.96.172:443/api/';
+        //     pw = process.env.HK_SERVER_PASSWORD;
+        //     break;
         case 'SG':
             api = 'https://210.16.120.12:5555/api/';
             pw = process.env.SG_SERVER_PASSWORD;
